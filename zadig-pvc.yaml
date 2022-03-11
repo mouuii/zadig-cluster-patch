@@ -1,0 +1,66 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  annotations:
+    meta.helm.sh/release-name: zadig-zadig
+    meta.helm.sh/release-namespace: zadig
+  labels:
+    app.kubernetes.io/component: mongodb
+    app.kubernetes.io/instance: zadig-zadig
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: mongodb
+    helm.sh/chart: mongodb-10.29.0
+  name: zadig-mongodb
+  namespace: zadig
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+  storageClassName: local-storage
+  volumeMode: Filesystem
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  annotations:
+    meta.helm.sh/release-name: zadig-zadig
+    meta.helm.sh/release-namespace: zadig
+  labels:
+    app.kubernetes.io/component: mysql
+    app.kubernetes.io/instance: zadig-zadig
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: data-zadig-mysql-0
+  name: data-zadig-mysql-0
+  namespace: zadig
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+  storageClassName: local-storage
+  volumeMode: Filesystem
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  annotations:
+    meta.helm.sh/release-name: zadig-zadig
+    meta.helm.sh/release-namespace: zadig
+  labels:
+    app.kubernetes.io/component: minio
+    app.kubernetes.io/instance: zadig-zadig
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: zadig-minio
+  name: zadig-minio
+  namespace: zadig
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+  storageClassName: local-storage
+  volumeMode: Filesystem

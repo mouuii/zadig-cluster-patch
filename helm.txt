@@ -1,0 +1,5 @@
+helm repo add koderover-chart https://koderover.tencentcloudcr.com/chartrepo/chart
+
+helm repo update
+
+helm upgrade --install --create-namespace -n zadig --set global.extensions.extAuth.extauthzServerRef.namespace=zadig --set endpoint.type=FQDN --set endpoint.FQDN=test.dev4.8slan.com --set dex.config.issuer=http://test.dev4.8slan.com/dex --set "dex.config.staticClients[0].redirectURIs[0]=http://test.dev4.8slan.com/api/v1/callback,dex.config.staticClients[0].id=zadig,dex.config.staticClients[0].name=zadig,dex.config.staticClients[0].secret=ZXhhbXBsZS1hcHAtc2VjcmV0"  --set init.adminPassword=zadig --set init.adminEmail=test@koderover.com --set tags.mysql=true --set mysql.persistence.pv=true --set mysql.primary.persistence.size=5Gi --set mongodb.db=zadig --set tags.mongodb=true  --set mongodb.persistence.enabled=true --set mongodb.persistence.size=5Gi --set tags.minio=true --set minio.persistence.enabled=true --set minio.persistence.size=5Gi --set tags.ingressController=false --set ingress-nginx.controller.ingressClass=cc --set gloo.gatewayProxies.gatewayProxy.service.type=NodePort --version=1.7.0 zadig-zadig koderover-chart/zadig
